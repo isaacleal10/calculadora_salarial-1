@@ -24,109 +24,79 @@
     <div class="row">
         <div class="col-md-3 register-left">
             <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
-            <h3>Welcome</h3>
-            <p>You are 30 seconds away from earning your own money!</p>
-            <input type="submit" name="" value="Login" /><br />
+            <h3>Trabajo final django</h3>
+            <br>
+            <br>
+
+            <h4>Autores</h4>
+            <br>
+
+            <p>Erick Nieto</p>
+            <p>Oscar Castillo</p>
         </div>
         <div class="col-md-9 register-right">
-            <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Employee</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Hirer</a>
-                </li>
-            </ul>
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <h3 class="register-heading">Apply as a Employee</h3>
+                    <h3 class="register-heading">Calculadora Salarial</h3>
                     <div class="row register-form">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="First Name *" value="" />
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Last Name *" value="" />
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Password *" value="" />
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Confirm Password *" value="" />
-                            </div>
-                            <div class="form-group">
-                                <div class="maxl">
-                                    <label class="radio inline">
-                                        <input type="radio" name="gender" value="male" checked>
-                                        <span> Male </span>
-                                    </label>
-                                    <label class="radio inline">
-                                        <input type="radio" name="gender" value="female">
-                                        <span>Female </span>
-                                    </label>
+                        <div class="col-md-12">
+                            <form method="GET" action="{% url 'submitquery'%}" class="row">
+                                <div class="form-group col-6">
+                                    <input type="text" class="form-control" placeholder="Ingrese su salario total mensual" name="query" id="query" value="{{salary}}"/>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Your Email *" value="" />
-                            </div>
-                            <div class="form-group">
-                                <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control" placeholder="Your Phone *" value="" />
-                            </div>
-                            <div class="form-group">
-                                <select class="form-control">
-                                    <option class="hidden" selected disabled>Please select your Sequrity Question</option>
-                                    <option>What is your Birthdate?</option>
-                                    <option>What is Your old Phone Number</option>
-                                    <option>What is your Pet Name?</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Enter Your Answer *" value="" />
-                            </div>
-                            <input type="submit" class="btnRegister" value="Register" />
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                    <h3 class="register-heading">Apply as a Hirer</h3>
-                    <div class="row register-form">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="First Name *" value="" />
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Last Name *" value="" />
-                            </div>
-                            <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Email *" value="" />
-                            </div>
-                            <div class="form-group">
-                                <input type="text" maxlength="10" minlength="10" class="form-control" placeholder="Phone *" value="" />
-                            </div>
+                                <div class="row col-6">
+                                    <div class="col-6">
+                                        <input type="submit" value="Calcular" class="btn btn-success" style="display: block;margin: 0 auto;">
+    
+                                    </div>
+                                    <div class="col-6">
+                                        <a href="{% url 'submitquery' %}" class="btn btn-danger" style="display: block;margin: 0 auto;">Limpiar</a>
 
-
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Password *" value="" />
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="row">
+                                <div class="result">
+                                    <label class="title">
+                                        <h3>Pago Neto</h3> 
+                                    </label>
+                                    <span class="subtitle">
+                                        <h3>${{netoSalary | default:0}}</h3> 
+                                    </span>
+    
+                                    <label class="title">
+                                        <h5>Salario</h5>
+                                    </label>
+                                    <span class="subtitle">
+                                        <h5>${{salary | default:0}}</h5> 
+                                    </span>
+    
+                                    <label class="title">
+                                        <p>Salud Obligatoria</p> 
+                                    </label>
+                                    <span class="subtitle">
+                                        <p>- ${{healthPension | default:0}}</p>  
+                                    </span>
+                                    
+                                    <label class="title">
+                                        <p>Auxilio de transporte</p> 
+                                    </label>
+                                    <span class="subtitle">
+                                        <p>${{transp | default:0}}</p>  
+                                    </span>
+    
+                                    <label class="title">
+                                        <p>Fondo de solidaridad</p> 
+                                    </label>
+                                    <span class="subtitle">
+                                        <p>- ${{solidFund | default:0}}</p>  
+                                    </span>
+                                </div>
+                                <div style=" width: 45%; margin-top: 2.5rem">
+                                    <div id="chart"></div>
+                                <div>
                             </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Confirm Password *" value="" />
-                            </div>
-                            <div class="form-group">
-                                <select class="form-control">
-                                    <option class="hidden" selected disabled>Please select your Sequrity Question</option>
-                                    <option>What is your Birthdate?</option>
-                                    <option>What is Your old Phone Number</option>
-                                    <option>What is your Pet Name?</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="`Answer *" value="" />
-                            </div>
-                            <input type="submit" class="btnRegister" value="Register" />
+                            
                         </div>
                     </div>
                 </div>
@@ -135,6 +105,18 @@
     </div>
 
 </div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+<script>
+
+    let div = document.getElementById('chart');
+    const canvas = document.createElement("canvas");
+    let ctx = canvas.getContext("2d");
+    new Chart(ctx, {{ data| safe}}?.chart);
+    div.appendChild(canvas);
+
+
+</script>
   </body>
 
 </html>
