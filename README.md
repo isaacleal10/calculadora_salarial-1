@@ -1,6 +1,5 @@
 ## Basic Calculator Salary
 
-![Example](https://github.com/Prospect121/calculadora_salarial/blob/main/example.png)
 
 ## Running the Project Locally
 
